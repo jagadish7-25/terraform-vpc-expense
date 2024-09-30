@@ -1,7 +1,3 @@
-variable "dns_hostnames" {
-  default = "true"
-}
-
 variable "project_name" {
     type = string
 }
@@ -10,19 +6,25 @@ variable "environment" {
     type = string
 }
 
-variable "cidr" {
-    default = {}
-  
-}
-variable "common_tags" {
-  default = {}
+variable "vpc_cidr" {
+    #default = "10.0.0.0/16"
 }
 
-variable "Vpc_tags" {
-  default = {}
+variable "enable_dns_hostnames" {
+    default = true
 }
+
+# Optional
+variable "common_tags" {
+    default = {}
+}
+
+variable "vpc_tags" {
+    default = {}
+}
+
 variable "igw_tags" {
-  default = {}
+    default = {}
 }
 
 variable "public_subnet_cidrs" {
@@ -36,6 +38,7 @@ variable "public_subnet_cidrs" {
 variable "public_subnet_tags" {
     default = {}
 }
+
 variable "private_subnet_cidrs" {
     type = list
     validation {
@@ -47,6 +50,7 @@ variable "private_subnet_cidrs" {
 variable "private_subnet_tags" {
     default = {}
 }
+
 variable "database_subnet_cidrs" {
     type = list
     validation {
@@ -59,19 +63,26 @@ variable "database_subnet_tags" {
     default = {}
 }
 
+variable "db_subnet_group_tags" {
+    default = {}
+}
+
 variable "nat_gateway_tags" {
-  default = {}
+    default = {}
 }
 
 variable "public_route_table_tags" {
-  default = {}
+    default = {}
 }
+
 variable "private_route_table_tags" {
-  default = {}
+    default = {}
 }
+
 variable "database_route_table_tags" {
-  default = {}
+    default = {}
 }
+
 variable "is_peering_required" {
     type = bool
     default = false
